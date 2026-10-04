@@ -371,9 +371,13 @@
     var lastPick = null;
     var maxP = 0, peakSinceTop = 0, hitEnd = false, endAgainSaid = false;
     var endTimer = null;
+    // Owed lines: reaching the bottom owes a "we missed something" on the way
+    // up, which in turn owes a "pretty impressive" on the way back down. These
+    // are deliberately independent of distance, so a fast flick away from the
+    // bottom can't skip the beat.
+    var endPending = false, impressPending = false;
     var findArmed = 0;                      // when Ctrl/Cmd+F was last pressed
     var FIND_WINDOW = 8000;                 // how long a find session stays armed
-    var saidMissed = false, saidImpressed = false;
     var saidQuarter = false, saidHalf = false, saidAlmost = false;
     var lastFast = 0;
 
@@ -433,8 +437,8 @@
       if (dist <= END_PX) {
         if (!hitEnd) {
           hitEnd = true;
-          saidMissed = false;                  // the up/down beats can play again
-          saidImpressed = false;
+          endPending = true;                   // owes a line on the way back up
+          impressPending = false;
           endAgainSaid = false;
           say(MESSAGES.end, 3, 4200);
         }
@@ -451,15 +455,17 @@
         return;
       }
 
-      // after reaching the end, the first look back up
-      if (hitEnd && dy < 0 && !saidMissed) {
-        saidMissed = true;
+      // after reaching the end, the first look back up — driven by its own
+      // flag rather than by distance, so a long flick up still pays it off
+      if (endPending && dy < 0) {
+        endPending = false;
+        impressPending = true;
         say(MESSAGES.missed, 3, 3400);
         return;
       }
       // ...then the first move back down
-      if (saidMissed && dy > 0 && !saidImpressed) {
-        saidImpressed = true;
+      if (impressPending && dy > 0) {
+        impressPending = false;
         say(MESSAGES.impressed, 3, 3400);
         return;
       }
