@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mohsen Tarassoli — Unity Game Developer</title>
+<meta name="description" content="Mohsen Tarassoli — Unity Game Developer with 10+ years building modular games, gameplay systems and UI for mobile and desktop titles.">
+<meta name="theme-color" content="#07060f">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#127918;</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="fx-scanlines" aria-hidden="true"></div>
+<div class="fx-glow" aria-hidden="true"></div>
+
+<!-- ======================= HUD / NAV ======================= -->
+<header class="hud">
+  <div class="wrap hud-inner">
+    <a class="brand" href="#top">
+      <span class="px icon" data-sprite="coin" aria-hidden="true"></span>
+      <span class="brand-text">MOHSEN TARASSOLI</span>
+    </a>
+    <nav class="hud-nav" aria-label="Sections">
+      <a href="#skills">INVENTORY</a>
+      <a href="#projects">GAMES</a>
+      <a href="#experience">QUEST LOG</a>
+      <a href="#education">TUTORIAL</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+    <div class="hud-right">
+      <span class="chip chip-lv" title="10+ years of experience">LV <b>10</b></span>
+      <a class="pbtn pbtn-sm" href="mailto:mohsentarassoli@gmail.com">HIRE ME</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ======================= HERO ======================= -->
+  <section class="hero" id="top">
+    <div class="floaters" aria-hidden="true">
+      <span class="px f1" data-sprite="ghost"></span>
+      <span class="px f2" data-sprite="invader"></span>
+      <span class="px f3" data-sprite="star"></span>
+      <span class="px f4" data-sprite="coin"></span>
+      <span class="px f5" data-sprite="heart"></span>
+    </div>
+
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="blink">&#9654;</span> PRESS START &middot; PLAYER 1</p>
+        <h1 class="hero-title">
+          <span class="t1">MOHSEN</span>
+          <span class="t2 grad">TARASSOLI</span>
+        </h1>
+        <p class="class-line">Unity Game Developer <span class="sep">&middot;</span> Tehran, Iran</p>
+        <p class="lede">
+          10+ years building games and interactive apps — modular gameplay systems,
+          physics-based mechanics, game AI and UI, shipped to mobile and desktop
+          across four studios.
+        </p>
+
+        <div class="cta">
+          <a class="pbtn pbtn-primary" href="mailto:mohsentarassoli@gmail.com">EMAIL ME</a>
+          <a class="pbtn" href="#projects">SEE PROJECTS</a>
+          <a class="pbtn pbtn-ghost" href="https://github.com/mohsentta" target="_blank" rel="noopener">GITHUB &#8599;</a>
+        </div>
+
+        <ul class="counters">
+          <li><span class="px icon" data-sprite="coin" aria-hidden="true"></span><b>150K+</b><span>installs</span></li>
+          <li><span class="px icon" data-sprite="star" aria-hidden="true"></span><b>10+</b><span>years</span></li>
+          <li><span class="px icon" data-sprite="trophy" aria-hidden="true"></span><b>4</b><span>studios</span></li>
+          <li><span class="px icon" data-sprite="floppy" aria-hidden="true"></span><b>C#</b><span>Unity 3D</span></li>
+        </ul>
+      </div>
+
+      <aside class="playercard reveal" aria-label="Player card">
+        <div class="pc-head">
+          <span class="px icon" data-sprite="joystick" aria-hidden="true"></span>
+          <h2>PLAYER CARD</h2>
+        </div>
+        <dl class="pc-rows">
+          <div><dt>CLASS</dt><dd>Unity Game Developer</dd></div>
+          <div><dt>LEVEL</dt><dd>10 <i>years</i></dd></div>
+          <div><dt>REGION</dt><dd>Tehran, IR &middot; Remote</dd></div>
+          <div><dt>PLATFORMS</dt><dd>Android &middot; iOS &middot; Desktop</dd></div>
+        </dl>
+        <div class="pc-bars">
+          <div class="stat">
+            <p><span>UNITY / C#</span><b>10/10</b></p>
+            <div class="bar" style="--v:1"><span></span></div>
+          </div>
+          <div class="stat">
+            <p><span>GAMEPLAY PROGRAMMING</span><b>9/10</b></p>
+            <div class="bar" style="--v:.9"><span></span></div>
+          </div>
+          <div class="stat">
+            <p><span>UI / UX</span><b>8/10</b></p>
+            <div class="bar" style="--v:.8"><span></span></div>
+          </div>
+          <div class="stat">
+            <p><span>PERFORMANCE &amp; DEBUG</span><b>9/10</b></p>
+            <div class="bar" style="--v:.9"><span></span></div>
+          </div>
+        </div>
+        <p class="pc-foot"><span class="px icon" data-sprite="heart" aria-hidden="true"></span> Ready for the next quest</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ======================= INVENTORY / SKILLS ======================= -->
+  <section class="section" id="skills">
+    <div class="wrap">
+      <h2 class="sec-title"><span class="tag">01</span> INVENTORY <span class="sec-sub">/ skills &amp; tools</span></h2>
+
+      <div class="grid inv">
+        <article class="card item reveal">
+          <span class="px icon icon-lg" data-sprite="joystick" aria-hidden="true"></span>
+          <h3>Game Development</h3>
+          <ul class="chips"><li>Unity 3D</li><li>C#</li><li>Android</li><li>iOS</li></ul>
+        </article>
+
+        <article class="card item reveal">
+          <span class="px icon icon-lg" data-sprite="invader" aria-hidden="true"></span>
+          <h3>Gameplay Programming</h3>
+          <ul class="chips"><li>Modular Games</li><li>Gameplay Mechanics</li><li>Game AI</li><li>Physics-Based Gameplay</li></ul>
+        </article>
+
+        <article class="card item reveal">
+          <span class="px icon icon-lg" data-sprite="heart" aria-hidden="true"></span>
+          <h3>UI / UX</h3>
+          <ul class="chips"><li>Unity Canvas</li><li>UI Development</li><li>UI Optimization</li></ul>
+        </article>
+
+        <article class="card item reveal">
+          <span class="px icon icon-lg" data-sprite="potion" aria-hidden="true"></span>
+          <h3>Performance &amp; Debugging</h3>
+          <ul class="chips"><li>Unity Profiler</li><li>Debugging</li><li>Code Optimization</li><li>Frame Rate Improvement</li></ul>
+        </article>
+
+        <article class="card item reveal">
+          <span class="px icon icon-lg" data-sprite="floppy" aria-hidden="true"></span>
+          <h3>Version Control</h3>
+          <ul class="chips"><li>Git</li><li>GitHub</li><li>GitLab</li><li>Azure DevOps</li></ul>
+        </article>
+
+        <article class="card item reveal">
+          <span class="px icon icon-lg" data-sprite="sword" aria-hidden="true"></span>
+          <h3>Programming Principles</h3>
+          <ul class="chips"><li>SOLID</li><li>OOP</li><li>Agile</li><li>CQRS</li></ul>
+        </article>
+
+        <article class="card item reveal">
+          <span class="px icon icon-lg" data-sprite="star" aria-hidden="true"></span>
+          <h3>Tools</h3>
+          <ul class="chips"><li>Unity Editor</li><li>Visual Studio</li><li>Photoshop</li><li>Maya</li></ul>
+        </article>
+
+        <article class="card item reveal">
+          <span class="px icon icon-lg" data-sprite="trophy" aria-hidden="true"></span>
+          <h3>Collaboration</h3>
+          <ul class="chips"><li>Cross-Functional Teams</li><li>Agile</li><li>Teamwork</li></ul>
+        </article>
+
+        <article class="card item reveal">
+          <span class="px icon icon-lg" data-sprite="coin" aria-hidden="true"></span>
+          <h3>Docs &amp; Project Management</h3>
+          <ul class="chips"><li>Jira / Confluence</li><li>Miro</li><li>Figma</li><li>Asana</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= GAME LIBRARY / PROJECTS ======================= -->
+  <section class="section" id="projects">
+    <div class="wrap">
+      <h2 class="sec-title"><span class="tag">02</span> GAME LIBRARY <span class="sec-sub">/ projects &amp; builds</span></h2>
+      <p class="sec-note">
+        Each build has a video slot ready to go.
+        <!--
+          ── HOW TO ADD YOUR VIDEO ──────────────────────────────────────────────
+          On any project's <figure class="video">, fill in data-youtube with either
+          the video ID or the full YouTube URL:
+
+              data-youtube="dQw4w9WgXcQ"
+              data-youtube="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+              data-youtube="https://youtu.be/dQw4w9WgXcQ"
+
+          The poster + play button appear automatically and the real YouTube
+          player only loads when a visitor clicks play (fast, and no cookies
+          before the click). Leave it empty to keep the "TRAILER — COMING SOON"
+          placeholder.
+          ───────────────────────────────────────────────────────────────────────
+        -->
+      </p>
+
+      <div class="grid projects">
+
+        <!-- ---------- 1. FEATURED ---------- -->
+        <article class="card project project-wide reveal">
+          <figure class="video" data-youtube="" data-title="Mahbanoo — hidden object adventure">
+            <div class="video-frame">
+              <div class="video-placeholder">
+                <span class="px icon icon-play" data-sprite="play" aria-hidden="true"></span>
+                <p class="video-label">TRAILER &mdash; COMING SOON</p>
+                <p class="video-hint">add <code>data-youtube</code> to embed</p>
+              </div>
+            </div>
+          </figure>
+          <div class="project-body">
+            <div class="project-top">
+              <h3>Mahbanoo</h3>
+              <span class="status status-shipped">SHIPPED</span>
+            </div>
+            <p class="meta">Garaj Games &middot; Tehran, Iran &middot; Feb 2021 — Jul 2021</p>
+            <p class="project-desc">
+              An adventure hidden-object game set in the 19th-century Middle East,
+              built in Unity — gameplay, UI/UX and art pipeline.
+            </p>
+            <ul class="bullets">
+              <li>Unity programmer and technical artist on the project.</li>
+              <li>Built gameplay and UI/UX in C# and Unity.</li>
+              <li>Created assets with Unity graph shaders, Photoshop and Maya.</li>
+            </ul>
+            <ul class="chips"><li>Unity</li><li>C#</li><li>Graph Shaders</li><li>Maya</li><li>UI/UX</li></ul>
+          </div>
+        </article>
+
+        <!-- ---------- 2 ---------- -->
+        <article class="card project reveal">
+          <figure class="video" data-youtube="" data-title="Modular mini-games">
+            <div class="video-frame">
+              <div class="video-placeholder">
+                <span class="px icon icon-play" data-sprite="play" aria-hidden="true"></span>
+                <p class="video-label">TRAILER &mdash; COMING SOON</p>
+                <p class="video-hint">add <code>data-youtube</code> to embed</p>
+              </div>
+            </div>
+          </figure>
+          <div class="project-body">
+            <div class="project-top">
+              <h3>Modular Mini-Games</h3>
+              <span class="status status-live">LIVE</span>
+            </div>
+            <p class="meta">Jungle Frog (Jindo Blue) &middot; Portugal &middot; Remote &middot; Dec 2021 — Jul 2026</p>
+            <p class="project-desc">
+              Mini-games shipped inside two major titles, built as drop-in modules
+              that slot into more than one host application.
+            </p>
+            <ul class="bullets">
+              <li>Developed modular games for seamless cross-app integration.</li>
+              <li>Optimized gameplay mechanics with senior developers.</li>
+            </ul>
+            <ul class="chips"><li>Unity</li><li>C#</li><li>Modular Architecture</li><li>Live Ops</li></ul>
+          </div>
+        </article>
+
+        <!-- ---------- 3 ---------- -->
+        <article class="card project reveal">
+          <figure class="video" data-youtube="" data-title="Soft-launch live title">
+            <div class="video-frame">
+              <div class="video-placeholder">
+                <span class="px icon icon-play" data-sprite="play" aria-hidden="true"></span>
+                <p class="video-label">TRAILER &mdash; COMING SOON</p>
+                <p class="video-hint">add <code>data-youtube</code> to embed</p>
+              </div>
+            </div>
+          </figure>
+          <div class="project-body">
+            <div class="project-top">
+              <h3>Soft-Launch Live Title</h3>
+              <span class="status status-live">LIVE OPS</span>
+            </div>
+            <p class="meta">Lazy Samurai &middot; Austin, TX, USA &middot; Remote &middot; Dec 2019 — Oct 2020</p>
+            <p class="project-desc">
+              Live-ops on a soft-launched mobile title: keeping the build healthy
+              while features kept landing.
+            </p>
+            <ul class="bullets">
+              <li>Maintained live features and optimized performance for smooth updates.</li>
+              <li>Handled animation importing, gameplay and UI development.</li>
+              <li>Integrated API requests to extend in-game functionality.</li>
+            </ul>
+            <ul class="chips"><li>Unity</li><li>C#</li><li>REST APIs</li><li>Profiler</li><li>Animation</li></ul>
+          </div>
+        </article>
+
+        <!-- ---------- 4 ---------- -->
+        <article class="card project reveal">
+          <figure class="video" data-youtube="" data-title="Story-reading interactive app">
+            <div class="video-frame">
+              <div class="video-placeholder">
+                <span class="px icon icon-play" data-sprite="play" aria-hidden="true"></span>
+                <p class="video-label">TRAILER &mdash; COMING SOON</p>
+                <p class="video-hint">add <code>data-youtube</code> to embed</p>
+              </div>
+            </div>
+          </figure>
+          <div class="project-body">
+            <div class="project-top">
+              <h3>Story-Reading App</h3>
+              <span class="status status-shipped">SHIPPED</span>
+            </div>
+            <p class="meta">FuSoft &middot; Tehran, Iran &middot; Oct 2018 — Nov 2019</p>
+            <p class="project-desc">
+              A story-reading application with interactive books and audiobooks,
+              offline-first with server sync.
+            </p>
+            <ul class="bullets">
+              <li>Modular SQLite systems for offline interaction and data syncing.</li>
+              <li>CQRS on the server side.</li>
+              <li>Animations and UI components for interactive books.</li>
+            </ul>
+            <ul class="chips"><li>Unity</li><li>C#</li><li>SQLite</li><li>CQRS</li><li>Offline Sync</li></ul>
+          </div>
+        </article>
+
+        <!-- ---------- 5 ---------- -->
+        <article class="card project reveal">
+          <figure class="video" data-youtube="" data-title="2D Android games">
+            <div class="video-frame">
+              <div class="video-placeholder">
+                <span class="px icon icon-play" data-sprite="play" aria-hidden="true"></span>
+                <p class="video-label">TRAILER &mdash; COMING SOON</p>
+                <p class="video-hint">add <code>data-youtube</code> to embed</p>
+              </div>
+            </div>
+          </figure>
+          <div class="project-body">
+            <div class="project-top">
+              <h3>2D Android Games</h3>
+              <span class="status status-hits">150K+ INSTALLS</span>
+            </div>
+            <p class="meta">Independent / Self-employed &middot; May 2013 — Dec 2017</p>
+            <p class="project-desc">
+              Two self-published 2D Android games, built end to end — design,
+              code and art.
+            </p>
+            <ul class="bullets">
+              <li>Full-stack development across design, programming and asset creation.</li>
+              <li>Over 150k active installs on one title after mobile optimizations.</li>
+            </ul>
+            <ul class="chips"><li>Unity</li><li>C#</li><li>Android</li><li>2D Art</li></ul>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= QUEST LOG / EXPERIENCE ======================= -->
+  <section class="section" id="experience">
+    <div class="wrap">
+      <h2 class="sec-title"><span class="tag">03</span> QUEST LOG <span class="sec-sub">/ experience</span></h2>
+
+      <ol class="timeline">
+        <li class="job reveal">
+          <div class="job-head">
+            <h3>Unity Developer <span class="at">&#64;</span> <span class="co">Jungle Frog (Jindo Blue)</span></h3>
+            <p class="meta">Madeira Island, Portugal &middot; Remote &middot; Dec 2021 — Jul 2026</p>
+          </div>
+          <ul class="bullets">
+            <li>Contributed to the development of mini-games inside two major titles, enhancing engaging gameplay experiences.</li>
+            <li>Developed modular games, enabling seamless integration across multiple applications.</li>
+            <li>Collaborated closely with senior developers to optimize gameplay mechanics and ensure high-quality player interactions.</li>
+          </ul>
+        </li>
+
+        <li class="job reveal">
+          <div class="job-head">
+            <h3>Unity Developer &amp; Technical Artist <span class="at">&#64;</span> <span class="co">Garaj Games</span></h3>
+            <p class="meta">Tehran, Iran &middot; Feb 2021 — Jul 2021</p>
+          </div>
+          <ul class="bullets">
+            <li>Unity programmer and technical artist on <em>Mahbanoo</em>, an adventure hidden-object game set in the 19th-century Middle East.</li>
+            <li>Focused on gameplay and UI/UX development using C# and Unity, plus asset creation with Unity graph shaders, Photoshop and Maya.</li>
+          </ul>
+        </li>
+
+        <li class="job reveal">
+          <div class="job-head">
+            <h3>Unity Developer <span class="at">&#64;</span> <span class="co">Lazy Samurai</span></h3>
+            <p class="meta">Austin, Texas, USA &middot; Remote &middot; Dec 2019 — Oct 2020</p>
+          </div>
+          <ul class="bullets">
+            <li>Maintained live features and optimized performance for the soft-launch project, ensuring smooth updates and minimal downtime.</li>
+            <li>Handled animation importing, gameplay development and UI development.</li>
+            <li>Integrated API requests to enhance in-game functionality.</li>
+          </ul>
+        </li>
+
+        <li class="job reveal">
+          <div class="job-head">
+            <h3>Unity Application Developer <span class="at">&#64;</span> <span class="co">FuSoft</span></h3>
+            <p class="meta">Tehran, Iran &middot; Oct 2018 — Nov 2019</p>
+          </div>
+          <ul class="bullets">
+            <li>Developed a story-reading Unity application with interactive elements, using CQRS for server-side development.</li>
+            <li>Designed and implemented modular SQLite-based systems, enabling seamless offline interaction and data syncing.</li>
+            <li>Created animations and designed UI components for interactive books and audiobooks, improving the user experience.</li>
+          </ul>
+        </li>
+
+        <li class="job reveal">
+          <div class="job-head">
+            <h3>Game Developer <span class="at">&#64;</span> <span class="co">Independent / Self-employed</span></h3>
+            <p class="meta">May 2013 — Dec 2017</p>
+          </div>
+          <ul class="bullets">
+            <li>Developed two 2D Android games end to end, including design, programming and asset creation.</li>
+            <li>Optimized game performance and asset loading for mobile, leading to over 150k active installs on one title.</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ======================= TUTORIAL / EDUCATION ======================= -->
+  <section class="section" id="education">
+    <div class="wrap">
+      <h2 class="sec-title"><span class="tag">04</span> TUTORIAL COMPLETE <span class="sec-sub">/ education</span></h2>
+      <article class="card edu reveal">
+        <span class="px icon icon-lg" data-sprite="trophy" aria-hidden="true"></span>
+        <div>
+          <h3>Bachelor's in Computer Software Engineering</h3>
+          <p class="meta">National University of Skill (NUS), Iran &middot; 2014 — 2020</p>
+          <ul class="bullets">
+            <li>Built an Android mobile game as the final-year project, covering game development, UI design and performance optimization.</li>
+            <li>Focused on software development, programming and engineering principles, with practical work in Unity and C#.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ======================= CONTACT ======================= -->
+  <section class="section" id="contact">
+    <div class="wrap">
+      <h2 class="sec-title"><span class="tag">05</span> JOIN PARTY <span class="sec-sub">/ contact</span></h2>
+
+      <div class="card contact reveal">
+        <p class="big">Open to Unity / gameplay programming roles — remote or Tehran-based.</p>
+
+        <ul class="menu">
+          <li>
+            <a href="mailto:mohsentarassoli@gmail.com">
+              <span class="px icon" data-sprite="heart" aria-hidden="true"></span>
+              <span class="menu-label">EMAIL</span>
+              <b>mohsentarassoli@gmail.com</b>
+              <span class="cursor">&#9654;</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/mohsentta" target="_blank" rel="noopener">
+              <span class="px icon" data-sprite="floppy" aria-hidden="true"></span>
+              <span class="menu-label">GITHUB</span>
+              <b>github.com/mohsentta</b>
+              <span class="cursor">&#9654;</span>
+            </a>
+          </li>
+        </ul>
+
+        <p class="addr">
+          <span class="px icon" data-sprite="invader" aria-hidden="true"></span>
+          Tehran, Iran &middot; open to remote
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <p class="insert"><span class="blink">&#9654;</span> INSERT COIN TO CONTINUE</p>
+    <p class="lives" aria-label="three lives">
+      <span class="px icon" data-sprite="heart" aria-hidden="true"></span>
+      <span class="px icon" data-sprite="heart" aria-hidden="true"></span>
+      <span class="px icon" data-sprite="heart" aria-hidden="true"></span>
+    </p>
+    <p class="copy">&copy; <span id="year">2026</span> Mohsen Tarassoli &middot; Unity Game Developer</p>
+  </div>
+</footer>
+
+<!-- ======================= SCROLL RUNNER ======================= -->
+<!--
+  The runner's frames. Add, remove or reorder them here — the animation
+  adapts. Frame 1 doubles as the idle pose (shown whenever scrolling stops).
+
+  The bubble is where he talks. His lines live in MESSAGES at the top of the
+  runner section in script.js.
+-->
+<div class="runbar" id="runbar" aria-hidden="true">
+  <span class="runbar-pct" id="runPct">0%</span>
+  <div class="runbar-bubble" id="runBubble"><span id="runBubbleText"></span></div>
+  <div class="runbar-runner" id="runner" data-frames="1.png,2.png,3.png,4.png"></div>
+  <div class="runbar-track"><div class="runbar-fill" id="runFill"></div></div>
+</div>
+
+<script src="script.js" defer></script>
+</body>
+</html>
