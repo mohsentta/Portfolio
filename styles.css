@@ -9,53 +9,53 @@
    them, and --on-accent is text that sits on a solid accent.
    -------------------------------------------------------------------------- */
 :root{
-  /* surfaces — warm neutral paper, no colour cast */
-  --bg:        #f6f5f2;
-  --panel:     #ffffff;
-  --panel-2:   #fbfaf7;
-  --line:      #dcd8d0;
-  --line-soft: #eae7e0;
+  /* surfaces — deep navy, flat (no neon, no CRT) */
+  --bg:        #14294f;
+  --panel:     #1c3968;
+  --panel-2:   #23487e;
+  --line:      #2e5a8d;
+  --line-soft: #274a72;
 
   /* ink */
-  --text:      #1c1b19;
-  --muted:     #56544e;
-  --dim:       #6f6c65;
+  --text:      #f2f7f6;
+  --muted:     #b8c9dc;
+  --dim:       #a3b8cf;
 
-  /* accents — deep and matte, one per job (no neon fills) */
-  --accent:    #0f766e;
-  --accent-2:  #9a5b06;
-  --accent-3:  #9d174d;
-  --accent-4:  #4d7c0f;
-  --on-accent: #ffffff;
+  /* accents — bright flat fills on navy, one per job */
+  --accent:    #85cd69;   /* green  — actions, links, shipped */
+  --accent-2:  #fb7e44;   /* coral  — rewards, counters */
+  --accent-3:  #fbb546;   /* amber  — highlights, company names */
+  --accent-4:  #5db2f0;   /* blue   — live / online */
+  --on-accent: #10260f;   /* dark text on the bright green fills */
 
-  /* tints — pale fills that always carry the matching accent as text */
-  --tint:      #e3f1ee;
-  --tint-2:    #fbf0dc;
-  --tint-4:    #f2f8e6;
+  /* tints — deep shades that carry the matching accent as text */
+  --tint:      #1d3d24;
+  --tint-2:    #4a2514;
+  --tint-4:    #163456;
 
-  --chip-bg:       #f2f0ea;
-  --inset-bg:      #ffffff;
-  --surface-btn:   #ffffff;
-  --hover-bg:      #f2f0ea;
-  --hover-border:  #bdb8ac;
-  --hud-bg:        rgba(246,245,242,.92);
-  --bar-track:     #e6e3dc;
-  --bar-gap:       rgba(255,255,255,.85);
-  --shadow-hard:   rgba(28,27,25,.13);
-  --shadow-soft:   0 1px 2px rgba(28,27,25,.05), 0 10px 26px rgba(28,27,25,.07);
-  --sheen:         rgba(255,255,255,.7);
-  --title-shadow:  rgba(28,27,25,.10);
-  --runner-shadow: rgba(28,27,25,.32);
-  --bubble-bg-1:   #ffffff;
-  --bubble-bg-2:   #faf9f6;
+  --chip-bg:       #16315c;
+  --inset-bg:      #16315c;
+  --surface-btn:   #23487e;
+  --hover-bg:      #23487e;
+  --hover-border:  #2f76b6;
+  --hud-bg:        rgba(20,41,79,.92);
+  --bar-track:     #0f2140;
+  --bar-gap:       rgba(0,0,0,.35);
+  --shadow-hard:   rgba(0,0,0,.35);
+  --shadow-soft:   0 2px 4px rgba(0,0,0,.25), 0 12px 28px rgba(0,0,0,.3);
+  --sheen:         rgba(255,255,255,.06);
+  --title-shadow:  rgba(0,0,0,.4);
+  --runner-shadow: rgba(0,0,0,.55);
+  --bubble-bg-1:   #23487e;
+  --bubble-bg-2:   #1c3968;
 
   /* the video panel stays dark in any theme — it reads as a screen */
-  --video-bg-1: #17161b;
-  --video-bg-2: #1d1c22;
-  --video-bg-3: #232128;
-  --video-bg-4: #1d1c22;
-  --video-overlay: rgba(10,10,12,.66);
-  --video-play-bg: rgba(20,19,24,.86);
+  --video-bg-1: #0c1830;
+  --video-bg-2: #101f3a;
+  --video-bg-3: #14244a;
+  --video-bg-4: #101f3a;
+  --video-overlay: rgba(4,8,16,.7);
+  --video-play-bg: rgba(12,24,48,.88);
 
   --radius: 12px;
   --maxw:   1120px;
@@ -204,7 +204,7 @@ code{
   line-height:1.3; letter-spacing:-.01em;
 }
 .hero-title .t1{ color:var(--text); text-shadow:3px 3px 0 var(--title-shadow); }
-.grad{ color:var(--accent); }
+.grad{ color:var(--accent-2); }
 .class-line{
   font-family:var(--pixel); font-size:.62rem; line-height:1.7;
   color:var(--accent-3); margin-bottom:16px;

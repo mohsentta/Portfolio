@@ -139,27 +139,29 @@ update the `PREV`/`NEXT` links of its two neighbours.
 
 ## Theme
 
-One flat theme: warm neutral surfaces (`#f6f5f2` page, white cards), near-black ink, and
-matte accents. No neon, no glow, no CRT scanline or vignette layers. What is left of the
-arcade look is structural — the pixel typeface, the chunky 2px borders, and the hard
-offset shadows — so it reads as a game portfolio without the cyberpunk styling.
+Navy base with flat bright accents, matched to `Mock up.jpg`: deep navy surfaces
+(`#14294f` page, `#1c3968` cards), off-white ink, and three accents — green `#85cd69`,
+coral `#fb7e44` and amber `#fbb546` — plus a bright blue `#5db2f0` for the live status.
+No neon, no glow, no CRT scanline or vignette layers; the arcade character comes from the
+pixel typeface, the chunky 2px borders, the hard offset shadows and the runtime pixel
+sprites.
 
-Every colour is a token on `:root`; nothing in the stylesheet hardcodes one, so a different
-palette means editing that one block.
+Every colour is a token on `:root`; nothing in the stylesheet hardcodes one, so matching a
+different mockup means editing that one block.
 
 | Token family | Use |
 |---|---|
-| `--accent`, `--accent-2`, `--accent-3`, `--accent-4` | deep matte colours for **text** and borders |
-| `--tint`, `--tint-2`, `--tint-4` | pale **fills** that always carry the matching accent as text |
-| `--on-accent` | text that sits on a solid accent (tags, buttons, the WATCH badge) |
+| `--accent` (green), `--accent-2` (coral), `--accent-3` (amber), `--accent-4` (blue) | bright **text** and borders on navy |
+| `--tint`, `--tint-2`, `--tint-4` | deep **fills** that always carry the matching accent as text |
+| `--on-accent` | dark text on the bright green fills (tags, buttons, the WATCH badge) |
 
-The accent split exists because the two jobs conflict: a link needs a *dark* teal to be
-readable on white, while a badge fill needs to be *pale* so its dark text still reads.
-Status chips therefore pair a tint with its accent rather than using a saturated fill.
+The accent split exists because the two jobs conflict: a link needs a *bright* green to be
+readable on navy, while a chip fill needs to be *deep* so its bright text still reads.
+Status chips therefore pair a deep tint with its bright accent rather than a saturated fill.
 
-All 15 text pairs were checked for WCAG AA; the worst case is 4.60:1.
+All 13 text pairs were checked for WCAG AA; the worst case is 5.22:1.
 
-The video panel is the one deliberately dark surface (`--video-bg-*`), because a video
+The video panel is the one deliberately darker surface (`--video-bg-*`), because a video
 still reads as a screen.
 
 ## Preview locally
