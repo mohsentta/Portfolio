@@ -180,20 +180,25 @@
     <div class="wrap">
       <h2 class="sec-title"><span class="tag">02</span> GAME LIBRARY <span class="sec-sub">/ projects &amp; builds</span></h2>
       <p class="sec-note">
-        Each build has a video slot ready to go.
+        Click any build to open its own page.
         <!--
           ── HOW TO ADD YOUR VIDEO ──────────────────────────────────────────────
-          On any project's <figure class="video">, fill in data-youtube with either
-          the video ID or the full YouTube URL:
+          Two attributes, both accepting a video ID or a full YouTube URL:
 
-              data-youtube="dQw4w9WgXcQ"
+            data-poster    on a card here — shows the YouTube thumbnail as a
+                           plain image (no player), so the whole card stays a
+                           single link through to the project page.
+
+            data-youtube   on the project page under projects/ — the click-to-play
+                           player. The real YouTube iframe only loads when a
+                           visitor presses play (fast, and no cookies before
+                           the click).
+
+              data-poster="dQw4w9WgXcQ"
               data-youtube="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
               data-youtube="https://youtu.be/dQw4w9WgXcQ"
 
-          The poster + play button appear automatically and the real YouTube
-          player only loads when a visitor clicks play (fast, and no cookies
-          before the click). Leave it empty to keep the "TRAILER — COMING SOON"
-          placeholder.
+          Leave either empty to keep the "TRAILER — COMING SOON" placeholder.
           ───────────────────────────────────────────────────────────────────────
         -->
       </p>
@@ -208,7 +213,7 @@
               <div class="video-placeholder">
                 <span class="px icon icon-play" data-sprite="play" aria-hidden="true"></span>
                 <p class="video-label">TRAILER &mdash; COMING SOON</p>
-                <p class="video-hint">add <code>data-youtube</code> to embed</p>
+                <p class="video-hint">add <code>data-poster</code> for a thumbnail</p>
               </div>
             </div>
           </figure>
@@ -240,7 +245,7 @@
               <div class="video-placeholder">
                 <span class="px icon icon-play" data-sprite="play" aria-hidden="true"></span>
                 <p class="video-label">TRAILER &mdash; COMING SOON</p>
-                <p class="video-hint">add <code>data-youtube</code> to embed</p>
+                <p class="video-hint">add <code>data-poster</code> for a thumbnail</p>
               </div>
             </div>
           </figure>
@@ -271,7 +276,7 @@
               <div class="video-placeholder">
                 <span class="px icon icon-play" data-sprite="play" aria-hidden="true"></span>
                 <p class="video-label">TRAILER &mdash; COMING SOON</p>
-                <p class="video-hint">add <code>data-youtube</code> to embed</p>
+                <p class="video-hint">add <code>data-poster</code> for a thumbnail</p>
               </div>
             </div>
           </figure>
@@ -303,7 +308,7 @@
               <div class="video-placeholder">
                 <span class="px icon icon-play" data-sprite="play" aria-hidden="true"></span>
                 <p class="video-label">TRAILER &mdash; COMING SOON</p>
-                <p class="video-hint">add <code>data-youtube</code> to embed</p>
+                <p class="video-hint">add <code>data-poster</code> for a thumbnail</p>
               </div>
             </div>
           </figure>
@@ -335,7 +340,7 @@
               <div class="video-placeholder">
                 <span class="px icon icon-play" data-sprite="play" aria-hidden="true"></span>
                 <p class="video-label">TRAILER &mdash; COMING SOON</p>
-                <p class="video-hint">add <code>data-youtube</code> to embed</p>
+                <p class="video-hint">add <code>data-poster</code> for a thumbnail</p>
               </div>
             </div>
           </figure>
