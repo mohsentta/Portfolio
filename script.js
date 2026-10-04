@@ -618,7 +618,39 @@
   }
 
   /* ------------------------------------------------------------------
-     4. BOOT
+     4. THEME TOGGLE
+     Bright is the default; the saved choice is applied by a tiny inline
+     script in <head> so there is no flash before first paint. This only
+     wires the button and keeps its label and the theme-color honest.
+     ------------------------------------------------------------------ */
+  function initTheme() {
+    var root = document.documentElement;
+    var btn = document.getElementById('themeToggle');
+    if (!btn) return;
+    var meta = document.querySelector('meta[name="theme-color"]');
+    var KEY = 'portfolio-theme';
+
+    function isDark() { return root.getAttribute('data-theme') === 'dark'; }
+
+    function label() {
+      var dark = isDark();
+      btn.textContent = dark ? 'LIGHT' : 'DARK';
+      btn.setAttribute('aria-label', 'Switch to ' + (dark ? 'light' : 'dark') + ' theme');
+      if (meta) meta.setAttribute('content', dark ? '#07060f' : '#fdf7ff');
+    }
+
+    btn.addEventListener('click', function () {
+      var next = isDark() ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem(KEY, next); } catch (e) {}
+      label();
+    });
+
+    label();
+  }
+
+  /* ------------------------------------------------------------------
+     5. BOOT
      ------------------------------------------------------------------ */
   // The "add data-youtube to embed" hints are for the owner only: mark the
   // document so they show while previewing locally and stay hidden once the
@@ -638,6 +670,7 @@
   for (var pi = 0; pi < posters.length; pi++) mountPoster(posters[pi]);
 
   initRunner();
+  initTheme();
 
   var year = document.getElementById('year');
   if (year) year.textContent = String(new Date().getFullYear());

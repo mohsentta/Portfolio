@@ -5,11 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mohsen Tarassoli — Unity Game Developer</title>
 <meta name="description" content="Mohsen Tarassoli — Unity Game Developer with 10+ years building modular games, gameplay systems and UI for mobile and desktop titles.">
-<meta name="theme-color" content="#07060f">
+<meta name="theme-color" content="#fdf7ff">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#127918;</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<script>/* apply the saved theme before first paint, so there is no flash */
+try{var t=localStorage.getItem('portfolio-theme');if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -33,6 +35,7 @@
     </nav>
     <div class="hud-right">
       <span class="chip chip-lv" title="10+ years of experience">LV <b>10</b></span>
+      <button class="pbtn pbtn-sm theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark theme">DARK</button>
       <a class="pbtn pbtn-sm" href="mailto:mohsentarassoli@gmail.com">HIRE ME</a>
     </div>
   </div>
