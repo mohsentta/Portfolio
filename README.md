@@ -137,32 +137,30 @@ To add a project: copy any file in `projects/`, change the title, `data-title`, 
 bullets and chips, then add a matching card to the index with its own `project-link`, and
 update the `PREV`/`NEXT` links of its two neighbours.
 
-## Themes
+## Theme
 
-Bright is the default — a light violet-cream base with the same arcade styling. The
-original neon-on-black look is still there behind a **DARK / LIGHT** button in the HUD,
-and the choice is remembered in `localStorage`.
+One flat theme: warm neutral surfaces (`#f6f5f2` page, white cards), near-black ink, and
+matte accents. No neon, no glow, no CRT scanline or vignette layers. What is left of the
+arcade look is structural — the pixel typeface, the chunky 2px borders, and the hard
+offset shadows — so it reads as a game portfolio without the cyberpunk styling.
 
-Every colour is a token declared twice: once on `:root` (bright) and once on
-`:root[data-theme="dark"]`. Nothing else in the stylesheet hardcodes a colour, so adding a
-third theme means adding one more block. Two flavours of accent exist:
+Every colour is a token on `:root`; nothing in the stylesheet hardcodes one, so a different
+palette means editing that one block.
 
 | Token family | Use |
 |---|---|
-| `--cyan`, `--purple`, `--pink`, `--yellow`, `--lime` | safe as **text** or borders on the current surface |
-| `--cyan-fill`, `--violet-fill`, `--yellow-fill`, … | bright **fills**, always under `--on-accent` text |
+| `--accent`, `--accent-2`, `--accent-3`, `--accent-4` | deep matte colours for **text** and borders |
+| `--tint`, `--tint-2`, `--tint-4` | pale **fills** that always carry the matching accent as text |
+| `--on-accent` | text that sits on a solid accent (tags, buttons, the WATCH badge) |
 
-That split exists because the two jobs conflict: on the bright theme a link needs a *dark*
-cyan to be readable, while a status badge needs a *bright* cyan with dark text on top.
-`--btn-fill-*` and `--tag-*` are separate again, because a wide violet→cyan gradient cannot
-guarantee contrast for one label colour across its whole length.
+The accent split exists because the two jobs conflict: a link needs a *dark* teal to be
+readable on white, while a badge fill needs to be *pale* so its dark text still reads.
+Status chips therefore pair a tint with its accent rather than using a saturated fill.
 
-The saved theme is applied by a small inline script in each page's `<head>`, before first
-paint, so a dark preference never flashes bright first.
+All 15 text pairs were checked for WCAG AA; the worst case is 4.60:1.
 
-Both palettes were checked for WCAG AA on every text pair (16 each); the worst case is
-4.60:1 bright and 4.75:1 dark. The runner sprite is mid-tone, so on the bright theme it
-gets an extra tight halo (`--runner-halo`) to keep its silhouette readable.
+The video panel is the one deliberately dark surface (`--video-bg-*`), because a video
+still reads as a screen.
 
 ## Preview locally
 
