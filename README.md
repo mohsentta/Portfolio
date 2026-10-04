@@ -84,6 +84,16 @@ Milestones are marked as seen even when you scroll past too fast to speak, so th
 arrive late and out of order. "Too fast" is `speed > 2.2` px/ms (or a single jump over
 260 px); the milestone only speaks under `1.4` px/ms.
 
+**The end of the page is measured in pixels, not percent.** `END_PX` (≈220 px, or 30% of
+the viewport, whichever is larger) is "arrived at the bottom". A percentage threshold
+looked reasonable but missed the usual stopping point: the runner bar's own bottom padding
+(81 px) plus the footer (89 px) put the "footer on screen" position at ~98% of the scroll
+range, so a `p >= 0.99` check only fired if you scrolled to the very last pixel.
+
+The end lines also **replay on each new arrival** — he re-arms once you have moved
+`END_ARM_PX` (≈900 px) back up the page, so arriving again says "Am I hired?" again instead
+of only ever once. Small jitter inside the zone does not re-trigger it.
+
 ### How Ctrl+F and jumps are detected
 
 The browser's find bar isn't exposed to the page, so Ctrl/Cmd+F is caught as a `keydown`

@@ -352,6 +352,13 @@
     var FLIP_ON_SCROLL_UP = true;   // mirror the sprite when scrolling up
     var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    // "At the end" is measured in pixels, not percent. The page is effectively
+    // finished as soon as the footer is on screen, and that lands well short of
+    // the last pixel — the runner bar's own bottom padding is ~81px, and the
+    // footer another ~90px. A percentage threshold missed both.
+    var END_PX = Math.max(220, Math.round(window.innerHeight * 0.3));
+    var END_ARM_PX = END_PX + Math.max(700, Math.round(window.innerHeight * 0.8));
+
     // Preload every frame so the cycle never flickers on its first pass.
     frames.forEach(function (src) { var im = new Image(); im.src = src; });
 
@@ -418,19 +425,24 @@
 
       // track the deepest point reached, before any early return
       if (p > peakSinceTop) peakSinceTop = p;
-      if (p < 0.95) endAgainSaid = false;    // left the bottom, re-arm the line
 
-      // at the very bottom
-      if (p >= 0.99) {
+      var dist = distanceFromBottom();
+      if (dist > END_ARM_PX) hitEnd = false;   // far away: the next arrival is a fresh one
+
+      // at the end of the page
+      if (dist <= END_PX) {
         if (!hitEnd) {
           hitEnd = true;
+          saidMissed = false;                  // the up/down beats can play again
+          saidImpressed = false;
+          endAgainSaid = false;
           say(MESSAGES.end, 3, 4200);
         }
         // if he is left sitting down here, he adds one more line
         if (!endAgainSaid) {
           if (endTimer) clearTimeout(endTimer);
           endTimer = setTimeout(function () {
-            if (lastP >= 0.99 && !bubbleShown) {
+            if (distanceFromBottom() <= END_PX && !bubbleShown) {
               endAgainSaid = true;
               say(MESSAGES.endAgain, 2, 3000);
             }
@@ -520,6 +532,14 @@
       if (span <= 0) return 0;
       var y = window.pageYOffset || doc.scrollTop || 0;
       return Math.min(1, Math.max(0, y / span));
+    }
+
+    // how far the viewport still has to travel before the document ends
+    function distanceFromBottom() {
+      var doc = document.documentElement;
+      var full = Math.max(doc.scrollHeight, document.body ? document.body.scrollHeight : 0);
+      var y = window.pageYOffset || doc.scrollTop || 0;
+      return full - (y + window.innerHeight);
     }
 
     function paint() {
