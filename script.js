@@ -343,8 +343,7 @@
         'I can do this all day. (I cannot.)'
       ],
       quarter:  'Warming up.',
-      half:     'Halfway. This is my cardio.',
-      almost:   'Almost there \u2014 don\u2019t stop.'
+      half:     'Halfway. This is my cardio.'
     };
 
     var FRAME_MS = 90;   // run cadence while scrolling
@@ -378,7 +377,7 @@
     var endPending = false, impressPending = false;
     var findArmed = 0;                      // when Ctrl/Cmd+F was last pressed
     var FIND_WINDOW = 8000;                 // how long a find session stays armed
-    var saidQuarter = false, saidHalf = false, saidAlmost = false;
+    var saidQuarter = false, saidHalf = false;
     var lastFast = 0;
 
     function pick(list) {
@@ -479,7 +478,6 @@
           // so they cannot turn up late and out of order
           if (p >= 0.25) saidQuarter = true;
           if (p >= 0.5) saidHalf = true;
-          if (p >= 0.75) saidAlmost = true;
           findArmed = now;               // keep stepping through matches armed
           say(pick(MESSAGES.teleport), 2, 1900);
           return;
@@ -494,10 +492,6 @@
       if (!saidHalf && p >= 0.5) {
         saidHalf = true;
         if (dy > 0 && speed < 1.4) { say(MESSAGES.half, 2, 2200); return; }
-      }
-      if (!saidAlmost && p >= 0.75) {
-        saidAlmost = true;
-        if (dy > 0 && speed < 1.4) { say(MESSAGES.almost, 2, 2200); return; }
       }
 
       // back at the very top after a real trip down

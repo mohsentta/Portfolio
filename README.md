@@ -68,7 +68,7 @@ so edit or add freely.
 | scrolling fast (repeatable, 3.2 s cooldown) | Wheee! · Wheeee! Faster! · I am speed! · My legs! My beautiful legs! |
 | pressing **Ctrl/Cmd+F** | Speedrun strats! |
 | an instant jump — find-in-page, an anchor link, Home/End | I am Flash! · Teleportation! · Over here! · Missed me! |
-| passing 25% / 50% / 75% going down | Warming up. · Halfway. This is my cardio. · Almost there — don't stop. |
+| passing 25% / 50% going down | Warming up. · Halfway. This is my cardio. |
 | reaching the bottom (once) | Am I hired? |
 | left sitting at the bottom | I can start Monday. |
 | first scroll back up after the bottom | Ooh, we missed something… |
