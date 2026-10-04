@@ -5,6 +5,7 @@ no image files (the pixel art is drawn at runtime as inline SVG).
 
 ```
 index.html    page content (hero, inventory, game library, quest log, education, contact)
+projects/     one page per project, linked from the cards on the index
 styles.css    arcade/CRT styling, pixel buttons, 16:9 video boxes, scroll-runner bar
 script.js     pixel-art sprite renderer + YouTube click-to-play + scroll runner
 1-4.png       four frames of the running character (see "Scroll runner")
@@ -98,6 +99,33 @@ never trip it. A jump also marks the milestones it flew past as seen.
 
 The bubble is `aria-hidden`, since announcing a joke on every scroll would be noise for
 screen-reader users.
+
+## Project pages
+
+Each card in the game library opens its own page under `projects/`. The whole card is one
+link — an overlay anchor is laid over the card so the entire surface is clickable while
+staying a real link (keyboard focusable, right-click → open in new tab):
+
+```html
+<article class="card project reveal">
+  <a class="project-link" href="projects/mahbanoo.html" aria-label="Open Mahbanoo"></a>
+  ...
+  <p class="project-cta">VIEW PROJECT <span class="cursor">&#9654;</span></p>
+</article>
+```
+
+The card carries `data-poster` rather than `data-youtube`: `script.js` drops in the YouTube
+thumbnail as a plain image with no player and no button, so clicking anywhere on the card
+navigates. The playable embed lives on the project page, which uses `data-youtube` as usual.
+
+Project pages use one level of nesting, so their asset paths are prefixed (`../styles.css`,
+`../script.js`, `../1.png`) and their nav links point back with `../index.html#section`.
+Relative URLs inside `styles.css` need no prefix — CSS resolves them against the stylesheet,
+not the document.
+
+To add a project: copy any file in `projects/`, change the title, `data-title`, facts,
+bullets and chips, then add a matching card to the index with its own `project-link`, and
+update the `PREV`/`NEXT` links of its two neighbours.
 
 ## Preview locally
 

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Modular Mini-Games — Mohsen Tarassoli</title>
+<meta name="description" content="Mini-games shipped inside two major titles, built as drop-in modules that slot into more than one host application.">
+<meta name="theme-color" content="#07060f">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#127918;</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<div class="fx-scanlines" aria-hidden="true"></div>
+<div class="fx-glow" aria-hidden="true"></div>
+
+<header class="hud">
+  <div class="wrap hud-inner">
+    <a class="brand" href="../index.html">
+      <span class="px icon" data-sprite="coin" aria-hidden="true"></span>
+      <span class="brand-text">MOHSEN TARASSOLI</span>
+    </a>
+    <nav class="hud-nav" aria-label="Sections">
+      <a href="../index.html#skills">INVENTORY</a>
+      <a href="../index.html#projects">GAMES</a>
+      <a href="../index.html#experience">QUEST LOG</a>
+      <a href="../index.html#education">TUTORIAL</a>
+      <a href="../index.html#contact">CONTACT</a>
+    </nav>
+    <div class="hud-right">
+      <span class="chip chip-lv" title="10+ years of experience">LV <b>10</b></span>
+      <a class="pbtn pbtn-sm" href="mailto:mohsentarassoli@gmail.com">HIRE ME</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="section project-page">
+    <div class="wrap">
+      <a class="backlink" href="../index.html#projects">&#9664; ALL PROJECTS</a>
+
+      <div class="pp-head">
+        <h1>Modular Mini-Games</h1>
+        <span class="status status-live">LIVE</span>
+      </div>
+      <p class="meta">Jungle Frog (Jindo Blue) &middot; Madeira Island, Portugal &middot; Remote &middot; Dec 2021 — Jul 2026</p>
+      <p class="pp-lede">Mini-games shipped inside two major titles, built as drop-in modules that slot into more than one host application.</p>
+
+      <!-- Video for this project: put a YouTube ID or full URL in data-youtube. -->
+      <figure class="video video-lg" data-youtube="" data-title="Modular mini-games">
+        <div class="video-frame">
+          <div class="video-placeholder">
+            <span class="px icon icon-play" data-sprite="play" aria-hidden="true"></span>
+            <p class="video-label">TRAILER &mdash; COMING SOON</p>
+            <p class="video-hint">add <code>data-youtube</code> to embed</p>
+          </div>
+        </div>
+      </figure>
+
+      <div class="pp-grid">
+        <div class="pp-main">
+          <h2 class="pp-h2">WHAT I DID</h2>
+          <ul class="bullets">
+            <li>Contributed to the development of mini-games inside two major titles, enhancing engaging gameplay experiences.</li>
+            <li>Developed modular games, enabling seamless integration across multiple applications.</li>
+            <li>Collaborated closely with senior developers to optimize gameplay mechanics and ensure high-quality player interactions.</li>
+          </ul>
+        </div>
+        <aside class="pp-side">
+          <div class="card">
+            <dl class="facts">
+              <div class="row"><dt>STUDIO</dt><dd>Jungle Frog (Jindo Blue)</dd></div>
+              <div class="row"><dt>ROLE</dt><dd>Unity Developer</dd></div>
+              <div class="row"><dt>PERIOD</dt><dd>Dec 2021 — Jul 2026</dd></div>
+              <div class="row"><dt>LOCATION</dt><dd>Madeira Island, Portugal (remote)</dd></div>
+              <div class="row"><dt>PLATFORM</dt><dd>Unity</dd></div>
+              <div class="row"><dt>STATUS</dt><dd>Live</dd></div>
+            </dl>
+            <ul class="chips">
+              <li>Unity</li>
+              <li>C#</li>
+              <li>Modular Architecture</li>
+              <li>Gameplay Mechanics</li>
+              <li>Live Ops</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+
+      <nav class="pp-nav">
+        <a class="pbtn" href="mahbanoo.html">&#9664; PREV</a>
+        <a class="pbtn" href="../index.html#projects">ALL PROJECTS</a>
+        <a class="pbtn" href="soft-launch-live-title.html">NEXT &#9654;</a>
+      </nav>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <p class="insert"><span class="blink">&#9654;</span> INSERT COIN TO CONTINUE</p>
+    <p class="lives" aria-label="three lives">
+      <span class="px icon" data-sprite="heart" aria-hidden="true"></span>
+      <span class="px icon" data-sprite="heart" aria-hidden="true"></span>
+      <span class="px icon" data-sprite="heart" aria-hidden="true"></span>
+    </p>
+    <p class="copy">&copy; <span id="year">2026</span> Mohsen Tarassoli &middot; Unity Game Developer</p>
+  </div>
+</footer>
+
+<!-- ======================= SCROLL RUNNER ======================= -->
+<div class="runbar" id="runbar" aria-hidden="true">
+  <span class="runbar-pct" id="runPct">0%</span>
+  <div class="runbar-bubble" id="runBubble"><span id="runBubbleText"></span></div>
+  <div class="runbar-runner" id="runner" data-frames="../1.png,../2.png,../3.png,../4.png"></div>
+  <div class="runbar-track"><div class="runbar-fill" id="runFill"></div></div>
+</div>
+
+<script src="../script.js" defer></script>
+</body>
+</html>

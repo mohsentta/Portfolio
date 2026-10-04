@@ -271,6 +271,25 @@
     paintPixelArt(btn);
   }
 
+  /* Static poster for the cards on the index: no player, no button, so the
+     whole card stays a single link and the video plays on the project page. */
+  function mountPoster(fig) {
+    var id = youtubeId(fig.getAttribute('data-poster'));
+    if (!id) return;                       // keep the "coming soon" placeholder
+    var frame = fig.querySelector('.video-frame');
+    if (!frame) return;
+
+    var img = document.createElement('img');
+    img.className = 'video-poster';
+    img.src = 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg';
+    img.alt = '';
+    img.loading = 'lazy';
+    img.decoding = 'async';
+
+    frame.innerHTML = '';
+    frame.appendChild(img);
+  }
+
   /* ------------------------------------------------------------------
      3. SCROLL RUNNER
      Fixed progress bar at the bottom of the viewport. The sprite frame
@@ -588,6 +607,9 @@
 
   var videos = document.querySelectorAll('.video[data-youtube]');
   for (var v = 0; v < videos.length; v++) mountVideo(videos[v]);
+
+  var posters = document.querySelectorAll('.video[data-poster]');
+  for (var pi = 0; pi < posters.length; pi++) mountPoster(posters[pi]);
 
   initRunner();
 
