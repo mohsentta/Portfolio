@@ -1,7 +1,7 @@
 /* ==========================================================================
    Portfolio runtime
    1. Draws the pixel-art sprites as inline SVG (no image files needed)
-   2. Drops the standard YouTube embed into any .video[data-youtube]
+   2. Turns any .video[data-youtube] into a thumbnail that opens YouTube
    3. Scroll reveal + retro stat-bar fill
    ========================================================================== */
 (function () {
@@ -203,8 +203,10 @@
   }
 
   /* ------------------------------------------------------------------
-     2. YOUTUBE EMBEDS
-     Drops the standard YouTube embed iframe into any .video[data-youtube].
+     2. YOUTUBE LINKS
+     Turns any .video[data-youtube] into a YouTube thumbnail with the pixel
+     play button. Clicking opens the video on youtube.com — no embedded
+     player, so it works regardless of YouTube's embed/bot restrictions.
      Accepts a bare video ID or any common YouTube URL form; leave it empty
      and the "coming soon" placeholder stays.
      ------------------------------------------------------------------ */
@@ -218,24 +220,48 @@
     return '';
   }
 
-  function mountEmbed(fig) {
+  function mountThumb(fig) {
     var id = youtubeId(fig.getAttribute('data-youtube'));
     if (!id) return;                       // keep the "coming soon" placeholder
 
     var frame = fig.querySelector('.video-frame');
     if (!frame) return;
 
-    var iframe = document.createElement('iframe');
-    iframe.src = 'https://www.youtube.com/embed/' + id;
-    iframe.title = fig.getAttribute('data-title') || 'Project video';
-    iframe.loading = 'lazy';
-    iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
-    iframe.setAttribute('allow',
-      'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
-    iframe.setAttribute('allowfullscreen', '');
+    var title = fig.getAttribute('data-title') || 'Project video';
+
+    var link = document.createElement('a');
+    link.className = 'video-link';
+    link.href = 'https://www.youtube.com/watch?v=' + id;
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.setAttribute('aria-label', 'Watch ' + title + ' on YouTube');
+
+    var img = document.createElement('img');
+    img.className = 'video-thumb';
+    img.src = 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg';
+    img.alt = '';
+    img.loading = 'lazy';
+    img.decoding = 'async';
+
+    var play = document.createElement('span');
+    play.className = 'video-play';
+    var glyph = document.createElement('span');
+    glyph.className = 'px icon-play';
+    glyph.setAttribute('data-sprite', 'play');
+    glyph.setAttribute('aria-hidden', 'true');
+    play.appendChild(glyph);
+
+    var badge = document.createElement('span');
+    badge.className = 'video-badge';
+    badge.textContent = 'WATCH ON YOUTUBE';
+
+    link.appendChild(img);
+    link.appendChild(play);
+    link.appendChild(badge);
 
     frame.innerHTML = '';
-    frame.appendChild(iframe);
+    frame.appendChild(link);
+    paintPixelArt(link);
   }
 
   /* ------------------------------------------------------------------
@@ -574,7 +600,7 @@
   paintPixelArt(document);
 
   var videos = document.querySelectorAll('.video[data-youtube]');
-  for (var v = 0; v < videos.length; v++) mountEmbed(videos[v]);
+  for (var v = 0; v < videos.length; v++) mountThumb(videos[v]);
 
   initRunner();
 
