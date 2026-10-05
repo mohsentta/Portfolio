@@ -7,7 +7,7 @@ no image files (the pixel art is drawn at runtime as inline SVG).
 index.html    page content (hero, inventory, game library, quest log, education, contact)
 projects/     one page per project, linked from the cards on the index
 styles.css    arcade/CRT styling, pixel buttons, 16:9 video boxes, scroll-runner bar
-script.js     pixel-art sprite renderer + YouTube click-to-play + scroll runner
+script.js     pixel-art sprite renderer + YouTube embeds + scroll runner
 1-4.png       four frames of the running character (see "Scroll runner")
 .github/      Pages deployment workflow
 ```
@@ -124,9 +124,10 @@ staying a real link (keyboard focusable, right-click → open in new tab):
 </article>
 ```
 
-The card carries `data-poster` rather than `data-youtube`: `script.js` drops in the YouTube
-thumbnail as a plain image with no player and no button, so clicking anywhere on the card
-navigates. The playable embed lives on the project page, which uses `data-youtube` as usual.
+Both the card and the project page use `data-youtube`, and `script.js` drops the standard
+YouTube embed iframe into each. On the card the video sits **above** the link overlay
+(`.project .video` is z-index 4, the overlay 3), so clicking the video plays it while
+clicking the title or description area still opens the project page.
 
 Project pages use one level of nesting, so their asset paths are prefixed (`../styles.css`,
 `../script.js`, `../1.png`) and their nav links point back with `../index.html#section`.
@@ -190,8 +191,8 @@ Each project has a video box:
 </figure>
 ```
 
-Put a YouTube ID **or any YouTube URL** in `data-youtube` and the box switches to a
-poster + play button by itself. All of these work:
+Put a YouTube ID **or any YouTube URL** in `data-youtube` and the standard YouTube embed
+is dropped in by itself. All of these work:
 
 ```html
 data-youtube="dQw4w9WgXcQ"
@@ -203,10 +204,10 @@ data-youtube="https://www.youtube.com/embed/dQw4w9WgXcQ"
 Leave it empty to keep the "TRAILER — COMING SOON" placeholder. `data-title` sets the
 iframe title used by screen readers.
 
-The real YouTube player is only loaded after a click (the poster is a plain thumbnail),
-so the page stays fast and sets no YouTube cookies up front. Once you no longer need
-the placeholder markup, you can delete the `video-placeholder` div — it gets replaced
-on load anyway.
+The iframe is the plain YouTube embed (`https://www.youtube.com/embed/<id>`, lazy-loaded,
+`allowfullscreen`), built by `mountEmbed()` in `script.js`. There is no custom thumbnail or
+play button — the real player renders directly. Once no video is missing you can delete the
+`video-placeholder` div; it is replaced on load anyway.
 
 ## Publish with GitHub Pages
 

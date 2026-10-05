@@ -1,7 +1,7 @@
 /* ==========================================================================
    Portfolio runtime
    1. Draws the pixel-art sprites as inline SVG (no image files needed)
-   2. Turns any .video[data-youtube] into a click-to-play YouTube player
+   2. Drops the standard YouTube embed into any .video[data-youtube]
    3. Scroll reveal + retro stat-bar fill
    ========================================================================== */
 (function () {
@@ -203,9 +203,10 @@
   }
 
   /* ------------------------------------------------------------------
-     2. YOUTUBE VIDEO BOXES
-     Accepts a bare ID or any common YouTube URL form.
-     The poster loads immediately; the real player only loads on click.
+     2. YOUTUBE EMBEDS
+     Drops the standard YouTube embed iframe into any .video[data-youtube].
+     Accepts a bare video ID or any common YouTube URL form; leave it empty
+     and the "coming soon" placeholder stays.
      ------------------------------------------------------------------ */
   function youtubeId(raw) {
     if (!raw) return '';
@@ -217,77 +218,24 @@
     return '';
   }
 
-  function mountVideo(fig) {
+  function mountEmbed(fig) {
     var id = youtubeId(fig.getAttribute('data-youtube'));
-    if (!id) return; // keep the "coming soon" placeholder
-
-    var frame = fig.querySelector('.video-frame');
-    if (!frame) return;
-
-    var title = fig.getAttribute('data-title') || 'Project video';
-
-    var btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'video-facade';
-    btn.setAttribute('aria-label', 'Play video: ' + title);
-
-    var img = document.createElement('img');
-    img.src = 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg';
-    img.alt = '';
-    img.loading = 'lazy';
-    img.decoding = 'async';
-
-    var play = document.createElement('span');
-    play.className = 'video-play';
-    var glyph = document.createElement('span');
-    glyph.className = 'px icon-play';
-    glyph.setAttribute('data-sprite', 'play');
-    glyph.setAttribute('aria-hidden', 'true');
-    play.appendChild(glyph);
-
-    var badge = document.createElement('span');
-    badge.className = 'video-badge';
-    badge.textContent = 'WATCH';
-
-    btn.appendChild(img);
-    btn.appendChild(play);
-    btn.appendChild(badge);
-
-    btn.addEventListener('click', function () {
-      var iframe = document.createElement('iframe');
-      iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1';
-      iframe.title = title;
-      iframe.loading = 'lazy';
-      iframe.setAttribute('allow',
-        'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
-      iframe.setAttribute('allowfullscreen', '');
-      frame.innerHTML = '';
-      frame.appendChild(iframe);
-      iframe.focus();
-    });
-
-    frame.innerHTML = '';
-    frame.appendChild(btn);
-    paintPixelArt(btn);
-  }
-
-  /* Static poster for the cards on the index: no player, no button, so the
-     whole card stays a single link and the video plays on the project page. */
-  function mountPoster(fig) {
-    var id = youtubeId(fig.getAttribute('data-poster'));
     if (!id) return;                       // keep the "coming soon" placeholder
+
     var frame = fig.querySelector('.video-frame');
     if (!frame) return;
 
-    var img = document.createElement('img');
-    img.className = 'video-poster';
-    img.src = 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg';
-    img.alt = '';
-    img.loading = 'lazy';
-    img.decoding = 'async';
+    var iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube.com/embed/' + id;
+    iframe.title = fig.getAttribute('data-title') || 'Project video';
+    iframe.loading = 'lazy';
+    iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+    iframe.setAttribute('allow',
+      'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+    iframe.setAttribute('allowfullscreen', '');
 
     frame.innerHTML = '';
-    frame.appendChild(img);
+    frame.appendChild(iframe);
   }
 
   /* ------------------------------------------------------------------
@@ -626,10 +574,7 @@
   paintPixelArt(document);
 
   var videos = document.querySelectorAll('.video[data-youtube]');
-  for (var v = 0; v < videos.length; v++) mountVideo(videos[v]);
-
-  var posters = document.querySelectorAll('.video[data-poster]');
-  for (var pi = 0; pi < posters.length; pi++) mountPoster(posters[pi]);
+  for (var v = 0; v < videos.length; v++) mountEmbed(videos[v]);
 
   initRunner();
 
