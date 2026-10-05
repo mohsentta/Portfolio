@@ -203,11 +203,13 @@
   }
 
   /* ------------------------------------------------------------------
-     2. YOUTUBE LINKS
-     Turns any .video[data-youtube] into a YouTube thumbnail with the pixel
-     play button. Clicking opens the video on youtube.com — no embedded
-     player, so it works regardless of YouTube's embed/bot restrictions.
-     Accepts a bare video ID or any common YouTube URL form; leave it empty
+     2. YOUTUBE THUMBNAILS
+     data-poster on a card  -> the thumbnail only; the card link covers it, so
+                               clicking anywhere (video included) opens the page.
+     data-youtube on a page -> the thumbnail plus the pixel play button, as a
+                               link out to YouTube (no embedded player, so no
+                               bot check and no error 153 from file://).
+     Both accept a bare video ID or any common YouTube URL form; leave it empty
      and the "coming soon" placeholder stays.
      ------------------------------------------------------------------ */
   function youtubeId(raw) {
@@ -262,6 +264,26 @@
     frame.innerHTML = '';
     frame.appendChild(link);
     paintPixelArt(link);
+  }
+
+  /* Cards on the index: the thumbnail only — no link and no play button, so
+     the whole card (video included) stays a link to the project page. */
+  function mountPoster(fig) {
+    var id = youtubeId(fig.getAttribute('data-poster'));
+    if (!id) return;                       // keep the "coming soon" placeholder
+
+    var frame = fig.querySelector('.video-frame');
+    if (!frame) return;
+
+    var img = document.createElement('img');
+    img.className = 'video-poster';
+    img.src = 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg';
+    img.alt = '';
+    img.loading = 'lazy';
+    img.decoding = 'async';
+
+    frame.innerHTML = '';
+    frame.appendChild(img);
   }
 
   /* ------------------------------------------------------------------
@@ -601,6 +623,9 @@
 
   var videos = document.querySelectorAll('.video[data-youtube]');
   for (var v = 0; v < videos.length; v++) mountThumb(videos[v]);
+
+  var posters = document.querySelectorAll('.video[data-poster]');
+  for (var pi = 0; pi < posters.length; pi++) mountPoster(posters[pi]);
 
   initRunner();
 

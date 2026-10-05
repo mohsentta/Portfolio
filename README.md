@@ -124,10 +124,10 @@ staying a real link (keyboard focusable, right-click → open in new tab):
 </article>
 ```
 
-Both the card and the project page use `data-youtube`, and `script.js` turns each into a
-YouTube thumbnail with the pixel play button. On the card the video sits **above** the link
-overlay (`.project .video` is z-index 4, the overlay 3), so clicking the video opens YouTube
-while clicking the title or description area still opens the project page.
+The card carries `data-poster`, which renders the thumbnail only — no link and no play
+button — so the card's overlay link stays on top and clicking the video opens the project
+page, exactly like the rest of the card. The playable version lives on the project page via
+`data-youtube`.
 
 Project pages use one level of nesting, so their asset paths are prefixed (`../styles.css`,
 `../script.js`, `../1.png`) and their nav links point back with `../index.html#section`.
@@ -176,12 +176,13 @@ python -m http.server 8099
 Then open <http://localhost:8099/>.
 
 While the page is served from localhost, each empty video box shows a small
-`add data-youtube to embed` hint. That hint is hidden automatically on any
+`add data-poster to embed` hint. That hint is hidden automatically on any
 non-local host, so visitors never see it.
 
 ## Adding a project video
 
-Each project has a video box:
+Each project page has a video box (cards on the index are the same markup with
+`data-poster` instead of `data-youtube`):
 
 ```html
 <figure class="video" data-youtube="" data-title="Mahbanoo — hidden object adventure">
@@ -191,8 +192,8 @@ Each project has a video box:
 </figure>
 ```
 
-Put a YouTube ID **or any YouTube URL** in `data-youtube` and the thumbnail + pixel play
-button appear by themselves. All of these work:
+Put a YouTube ID **or any YouTube URL** in `data-youtube` on a project page and the
+thumbnail + pixel play button appear by themselves. All of these work:
 
 ```html
 data-youtube="dQw4w9WgXcQ"
@@ -201,12 +202,14 @@ data-youtube="https://youtu.be/dQw4w9WgXcQ"
 data-youtube="https://www.youtube.com/embed/dQw4w9WgXcQ"
 ```
 
-Leave it empty to keep the "TRAILER — COMING SOON" placeholder. `data-title` is used for the
-link's accessible name.
+On the index, cards use `data-poster` instead, which is the thumbnail only.
 
-The video is a **link out to YouTube**, not an embedded player: `mountThumb()` in `script.js`
-builds an `<a href="https://www.youtube.com/watch?v=<id>" target="_blank" rel="noopener">`
-around the thumbnail, the pixel play button and a `WATCH ON YOUTUBE` badge.
+Leave either empty to keep the "TRAILER — COMING SOON" placeholder. `data-title` is used for
+the link's accessible name.
+
+The project-page video is a **link out to YouTube**, not an embedded player: `mountThumb()`
+in `script.js` builds an `<a href="https://www.youtube.com/watch?v=<id>" target="_blank"
+rel="noopener">` around the thumbnail, the pixel play button and a `WATCH ON YOUTUBE` badge.
 
 That is deliberate. An embedded player is refused with *"Sign in to confirm you're not a
 bot"* on VPN/proxied connections, and with *error 153* on pages opened from `file://` (a

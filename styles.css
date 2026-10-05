@@ -453,16 +453,20 @@ html.is-local .video-hint{ display:block; }
   padding:5px 7px; border-radius:6px;
 }
 
-/* whole card is one link — but the video sits above the overlay so its own
-   YouTube link is clickable; the title/description area opens the page */
+/* card thumbnail: an image in the flow, with no link of its own, so the card's
+   overlay link stays on top and the whole card opens the project page */
+.video-poster{
+  position:absolute; inset:0; z-index:2;
+  width:100%; height:100%; object-fit:cover; display:block;
+}
+
+/* whole card is one link */
 .project{ position:relative; }
 .project-link{
   position:absolute; inset:0; z-index:3;
   border-radius:var(--radius);
 }
 .project-link:focus-visible{ outline:3px solid var(--accent); outline-offset:3px; }
-/* lift the video above the card link so the embed can be played */
-.project .video{ position:relative; z-index:4; }
 .project-cta{
   display:flex; align-items:center; gap:8px;
   margin:2px 0 0;
