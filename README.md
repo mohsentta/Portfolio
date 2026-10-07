@@ -6,7 +6,7 @@ no image files (the pixel art is drawn at runtime as inline SVG).
 ```
 index.html        page content (hero, inventory, game library, quest log, education, contact)
 projects/         one page per project, linked from the cards on the index
-screenshots/      app screenshots used by the project galleries
+screenshots/      app screenshots used by the project galleries (WebP)
 RanaStory.mp4     local trailer for the Story-Reading App (not on YouTube)
 styles.css        arcade styling, pixel buttons, 16:9 video boxes, scroll-runner bar
 script.js         pixel-art sprite renderer + video thumbnails + scroll runner
@@ -241,6 +241,13 @@ Any project page can carry a gallery — each `.shot` links to the full-size fil
   …
 </div>
 ```
+
+`.shot-grid` is multi-column rather than a grid, so a set that mixes portrait phone
+screenshots with landscape shots flows without leaving gaps in a row. Images keep their own
+aspect ratio; only the column width is fixed (240 px).
+
+Screenshots are stored as **WebP** where they came in as PNG — the Floodia set went from
+2.9 MB of PNG to 279 KB. The original PNGs stay in `Floodia/`, which is gitignored.
 
 Leave either empty to keep the "TRAILER — COMING SOON" placeholder. `data-title` is used for
 the link's accessible name.
