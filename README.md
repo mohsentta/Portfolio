@@ -228,6 +228,21 @@ this, with a screenshot as the poster:
 
 Paths are `../`-prefixed because the page lives one level down.
 
+### A project with no video
+
+Drop the data attributes and put a still in the frame instead. `.video-hero` renders at the
+same 16:9 size as the video boxes, so the page rhythm holds:
+
+```html
+<figure class="video video-lg">
+  <div class="video-frame">
+    <img class="video-hero" src="../screenshots/floodia-gameplay.webp" alt="Floodia gameplay">
+  </div>
+</figure>
+```
+
+The Soft-Launch Live Title page uses this, and takes the game logo as its card thumbnail.
+
 ### Screenshot galleries
 
 Any project page can carry a gallery — each `.shot` links to the full-size file:
