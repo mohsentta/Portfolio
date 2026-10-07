@@ -222,6 +222,25 @@
     return '';
   }
 
+  /* YouTube's best still: maxresdefault is 1280x720 — the same 16:9 shape as
+     our frames, so nothing gets cropped. Not every upload has one, and when it
+     is missing YouTube still answers HTTP 200 with a 120x90 placeholder, so
+     onerror never fires: the loaded size is the only reliable signal. */
+  function thumbSrc(img, id) {
+    var hq = 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg';
+    function useHq() {
+      img.onload = null;
+      img.onerror = null;
+      img.src = hq;
+    }
+    img.onerror = useHq;
+    img.onload = function () {
+      if (img.naturalWidth >= 640) return;   // a real maxresdefault
+      useHq();                               // the 120x90 placeholder
+    };
+    img.src = 'https://i.ytimg.com/vi/' + id + '/maxresdefault.jpg';
+  }
+
   function mountThumb(fig) {
     var id = youtubeId(fig.getAttribute('data-youtube'));
     if (!id) return;                       // keep the "coming soon" placeholder
@@ -240,7 +259,7 @@
 
     var img = document.createElement('img');
     img.className = 'video-thumb';
-    img.src = 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg';
+    thumbSrc(img, id);
     img.alt = '';
     img.loading = 'lazy';
     img.decoding = 'async';
@@ -279,7 +298,7 @@
     var id = youtubeId(raw);
     var img = document.createElement('img');
     img.className = 'video-poster';
-    img.src = id ? 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg' : raw;
+    if (id) { thumbSrc(img, id); } else { img.src = raw; }
     img.alt = '';
     img.loading = 'lazy';
     img.decoding = 'async';

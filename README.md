@@ -271,6 +271,13 @@ The project-page video is a **link out to YouTube**, not an embedded player: `mo
 in `script.js` builds an `<a href="https://www.youtube.com/watch?v=<id>" target="_blank"
 rel="noopener">` around the thumbnail, the pixel play button and a `WATCH ON YOUTUBE` badge.
 
+Thumbnails come from `thumbSrc()`, which asks for `maxresdefault.jpg` (1280x720 — the same 16:9
+shape as the frames, so nothing is cropped) and drops to `hqdefault.jpg` (480x360) when that
+does not exist. Note the trap: for a **missing** maxres, YouTube still answers HTTP 200 with a
+120x90 placeholder image, so `onerror` never fires — the fallback triggers on the loaded
+`naturalWidth` instead. Without that check, a video with no maxres silently shows a blurry
+120x90 still.
+
 That is deliberate. An embedded player is refused with *"Sign in to confirm you're not a
 bot"* on VPN/proxied connections, and with *error 153* on pages opened from `file://` (a
 `file://` page has no origin, so no `Referer` is sent and YouTube rejects the embed). A plain
