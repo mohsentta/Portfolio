@@ -23,7 +23,7 @@
 
   /* accents — bright flat fills on navy, one per job */
   --accent:    #85cd69;   /* green  — actions, links, shipped */
-  --accent-2:  #fb7e44;   /* coral  — rewards, counters */
+  --accent-2:  #ffa470;   /* coral, lightened for text: 4.7:1 on chip bg, 5.9:1 on panels */
   --accent-3:  #fbb546;   /* amber  — highlights, company names */
   --accent-4:  #5db2f0;   /* blue   — live / online */
   --on-accent: #10260f;   /* dark text on the bright green fills */
@@ -713,7 +713,8 @@ html.is-local .video-hint{ display:block; }
   :root{ --runner-h:44px; --track-h:10px; --label-h:14px; }
   .hud-inner{ height:auto; padding-top:10px; padding-bottom:10px; flex-wrap:wrap; }
   .brand-text{ font-size:.54rem; }
-  .hud-nav{ order:3; width:100%; margin-left:0; }
+  .hud-nav{ order:3; width:100%; margin-left:0; flex-wrap:wrap; row-gap:4px;
+            overflow-x:visible; justify-content:center; }
   .hud-right{ margin-left:auto; }
   .section{ padding:48px 0; }
   .projects, .inv{ grid-template-columns:1fr; }
