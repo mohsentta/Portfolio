@@ -4,12 +4,14 @@ Game-styled portfolio site. Plain HTML / CSS / JS — no build step, no dependen
 no image files (the pixel art is drawn at runtime as inline SVG).
 
 ```
-index.html    page content (hero, inventory, game library, quest log, education, contact)
-projects/     one page per project, linked from the cards on the index
-styles.css    arcade/CRT styling, pixel buttons, 16:9 video boxes, scroll-runner bar
-script.js     pixel-art sprite renderer + YouTube thumbnail links + scroll runner
-1-4.png       four frames of the running character (see "Scroll runner")
-.github/      Pages deployment workflow
+index.html        page content (hero, inventory, game library, quest log, education, contact)
+projects/         one page per project, linked from the cards on the index
+screenshots/      app screenshots used by the project galleries
+RanaStory.mp4     local trailer for the Story-Reading App (not on YouTube)
+styles.css        arcade styling, pixel buttons, 16:9 video boxes, scroll-runner bar
+script.js         pixel-art sprite renderer + video thumbnails + scroll runner
+1-4.png           four frames of the running character (see "Scroll runner")
+.github/          Pages deployment workflow
 ```
 
 `Resume.pdf` and `preview.png` are listed in `.gitignore`: they stay on disk but are not
@@ -202,7 +204,43 @@ data-youtube="https://youtu.be/dQw4w9WgXcQ"
 data-youtube="https://www.youtube.com/embed/dQw4w9WgXcQ"
 ```
 
-On the index, cards use `data-poster` instead, which is the thumbnail only.
+On the index, cards use `data-poster` instead, which is the thumbnail only. It takes a
+YouTube ID/URL as well, or **any image path** for a local still — the Story-Reading App card
+uses `data-poster="screenshots/rana-story-1.jpg"`.
+
+### A trailer that isn't on YouTube
+
+For a local video file, skip the data attributes and put a plain `<video>` in the frame — it
+plays straight from the site, no embed and no bot check. The Story-Reading App page does
+this, with a screenshot as the poster:
+
+```html
+<figure class="video video-lg" data-title="Rana Story trailer">
+  <div class="video-frame">
+    <video controls preload="metadata" playsinline
+           poster="../screenshots/rana-story-1.jpg">
+      <source src="../RanaStory.mp4" type="video/mp4">
+      Your browser cannot play this video. <a href="../RanaStory.mp4">Download it instead</a>.
+    </video>
+  </div>
+</figure>
+```
+
+Paths are `../`-prefixed because the page lives one level down.
+
+### Screenshot galleries
+
+Any project page can carry a gallery — each `.shot` links to the full-size file:
+
+```html
+<h2 class="pp-h2 pp-h2-wide">SCREENSHOTS</h2>
+<div class="shot-grid">
+  <a class="shot" href="../screenshots/rana-story-1.jpg" target="_blank" rel="noopener">
+    <img src="../screenshots/rana-story-1.jpg" alt="Rana Story screenshot 1" loading="lazy">
+  </a>
+  …
+</div>
+```
 
 Leave either empty to keep the "TRAILER — COMING SOON" placeholder. `data-title` is used for
 the link's accessible name.

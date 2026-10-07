@@ -267,17 +267,19 @@
   }
 
   /* Cards on the index: the thumbnail only — no link and no play button, so
-     the whole card (video included) stays a link to the project page. */
+     the whole card (video included) stays a link to the project page.
+     data-poster takes a YouTube ID/URL, or any image path for a local still. */
   function mountPoster(fig) {
-    var id = youtubeId(fig.getAttribute('data-poster'));
-    if (!id) return;                       // keep the "coming soon" placeholder
+    var raw = (fig.getAttribute('data-poster') || '').trim();
+    if (!raw) return;                      // keep the "coming soon" placeholder
 
     var frame = fig.querySelector('.video-frame');
     if (!frame) return;
 
+    var id = youtubeId(raw);
     var img = document.createElement('img');
     img.className = 'video-poster';
-    img.src = 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg';
+    img.src = id ? 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg' : raw;
     img.alt = '';
     img.loading = 'lazy';
     img.decoding = 'async';
