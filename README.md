@@ -35,12 +35,18 @@ chrome --headless=new --disable-gpu --no-pdf-header-footer \
        --print-to-pdf=cv.pdf file:///<repo>/cv.html
 ```
 
-Then confirm the redaction survived, because this is the one thing that must never slip:
+Then confirm the redaction survived, because this is the one thing that must never slip. The
+check deliberately does not spell out the private strings — compare against `Resume.pdf`, which
+stays unpublished:
 
 ```sh
-python -c "from pypdf import PdfReader; t=' '.join(p.extract_text() for p in PdfReader('cv.pdf').pages); \
-           print([x for x in ('933','4352','Malayeri','Makhsos') if x in t] or 'clean')"
+python -c "from pypdf import PdfReader; import re; \
+           t=' '.join(p.extract_text() or '' for p in PdfReader('cv.pdf').pages); \
+           print('phone-like runs:', re.findall(r'\+?\d[\d\s\-]{7,}\d', t) or 'none'); \
+           print('street address present:', 'Address' in t)"
 ```
+
+Both lines must read `none` and `False`.
 
 ## Social previews
 
