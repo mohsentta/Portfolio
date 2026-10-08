@@ -19,3 +19,6 @@ audit-*.html
 la.html
 *-dom.html
 
+# job-application material — private, never published
+cover-letter-jetbrains.*
+
