@@ -10,3 +10,12 @@ Mock up.jpg
 # original PNG screenshots — optimised WebP copies live in screenshots/
 Floodia/
 
+# scratch files written by verification runs (axe injections, probes, DOM dumps).
+# They must never be published: this is what slipped through twice.
+.*.html
+.*.js
+a2-*.html
+audit-*.html
+la.html
+*-dom.html
+
