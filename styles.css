@@ -356,6 +356,9 @@ code{
   padding:3px 9px;
 }
 .item:hover .chips li{ border-color:var(--hover-border); color:var(--text); }
+/* shipped-title names should read as names, not as tech tags */
+.chips.titles{ margin-bottom:6px; }
+.chips.titles li{ font-size:.8rem; color:var(--text); border-color:var(--hover-border); }
 
 /* ==========================================================================
    PROJECTS + VIDEO BOXES
