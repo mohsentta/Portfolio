@@ -386,6 +386,12 @@ code{
 .status-shipped{ background:var(--tint); }
 .status-live{ background:var(--tint-4); color:var(--accent-4); }
 .status-hits{ background:var(--tint-2); color:var(--accent-2); }
+/* a minor figure — deliberately quieter than .status-hits so a 150K figure never
+   reads as equal billing to a 500M one */
+.status-note{
+  background:transparent; color:var(--dim);
+  border:2px solid var(--line); font-size:.42rem; letter-spacing:.02em;
+}
 
 /* featured (wide) project — "legendary" outline */
 .project-wide{
